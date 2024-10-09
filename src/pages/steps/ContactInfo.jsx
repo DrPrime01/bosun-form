@@ -10,14 +10,14 @@ export default function ContactInfo({ control, setCurrentStep }) {
       </h3>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <CustomFormField
-          name="first_name"
+          name="firstName"
           type="input"
           label="First Name"
           control={control}
           placeholder="John"
         />
         <CustomFormField
-          name="last_name"
+          name="lastName"
           type="input"
           label="Last Name"
           control={control}
@@ -33,14 +33,14 @@ export default function ContactInfo({ control, setCurrentStep }) {
           placeholder="johndoe@gmail.com"
         />
         <CustomFormField
-          name="phone_number"
+          name="phoneNumber"
           type="phone"
           label="Phone Number"
           control={control}
         />
       </div>
       <CustomFormField
-        name="company_name"
+        name="companyName"
         type="input"
         label="Company's Name"
         control={control}

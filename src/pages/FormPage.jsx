@@ -6,6 +6,8 @@ import Stepper from "../components/Stepper";
 import ContactInfo from "./steps/ContactInfo";
 import DocumentUpload from "./steps/DocumentUpload";
 import AdditionalInfo from "./steps/AdditionalInfo";
+import ServiceAreaCoverage from "./steps/ServiceAreaCoverage";
+import ProvidedServices from "./steps/ProvidedServices";
 
 export default function FormPage() {
   const [currentStep, setCurrentStep] = useState(1);
@@ -20,6 +22,22 @@ export default function FormPage() {
     },
     {
       3: (
+        <ServiceAreaCoverage
+          control={form.control}
+          setCurrentStep={setCurrentStep}
+        />
+      ),
+    },
+    {
+      4: (
+        <ProvidedServices
+          control={form.control}
+          setCurrentStep={setCurrentStep}
+        />
+      ),
+    },
+    {
+      5: (
         <AdditionalInfo
           control={form.control}
           setCurrentStep={setCurrentStep}
@@ -27,6 +45,11 @@ export default function FormPage() {
       ),
     },
   ];
+
+  const onSubmit = async (data) => {
+    console.log(data);
+  };
+
   return (
     <div className="w-full">
       <div className="w-full mb-10">
@@ -38,7 +61,10 @@ export default function FormPage() {
       </div>
 
       <Form {...form}>
-        <form className="flex flex-col gap-y-6">
+        <form
+          className="flex flex-col gap-y-6"
+          onSubmit={form.handleSubmit(onSubmit)}
+        >
           {steps[currentStep - 1][currentStep]}
         </form>
       </Form>

@@ -10,7 +10,7 @@ export default function AdditionalInfo({ control, setCurrentStep }) {
         Additional Information
       </h3>
       <CustomFormField
-        name="communication_preference"
+        name="schedulingCommunicationPreferences"
         type="select"
         label="Scheduling Communication Preference"
         control={control}
@@ -21,7 +21,7 @@ export default function AdditionalInfo({ control, setCurrentStep }) {
         <SelectItem value="text">Text</SelectItem>
       </CustomFormField>
       <CustomFormField
-        name="contact_name"
+        name="schedulingContactName"
         type="input"
         label="Scheduling Contact Name"
         control={control}
@@ -29,21 +29,21 @@ export default function AdditionalInfo({ control, setCurrentStep }) {
       />
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <CustomFormField
-          name="contact_email"
+          name="schedulingContactEmail"
           type="input"
           label="Scheduling Contact Email"
           control={control}
           placeholder="janedoe@gmail.com"
         />
         <CustomFormField
-          name="contact_phone_number"
+          name="schedulingContactPhone"
           type="phone"
           label="Scheduling Contact Phone Number"
           control={control}
         />
       </div>
       <CustomFormField
-        name="close_on_bank_holidays"
+        name="closeOnBankHoliday"
         type="select"
         label="Do you close on typical bank holidays?"
         control={control}
@@ -54,14 +54,14 @@ export default function AdditionalInfo({ control, setCurrentStep }) {
       </CustomFormField>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <CustomFormField
-          name="appointment_start_time"
+          name="appointmentStartTime"
           type="time"
           label="Appointment Start Time Monday-Friday"
           control={control}
           placeholder="Please select"
         />
         <CustomFormField
-          name="appointment_end_time"
+          name="appointmentEndTime"
           type="time"
           label="Appointment End Time Monday-Friday"
           control={control}
@@ -102,7 +102,7 @@ export default function AdditionalInfo({ control, setCurrentStep }) {
       </div>
       <div className="flex flex-col gap-y-1">
         <CustomFormField
-          name="weekly_capacity_naira"
+          name="weeklyCapacityJob"
           type="input"
           label="Weekly Capacity (#)"
           control={control}
@@ -113,7 +113,7 @@ export default function AdditionalInfo({ control, setCurrentStep }) {
       </div>
       <div className="flex flex-col gap-y-1">
         <CustomFormField
-          name="weekly_capacity_dollar"
+          name="weeklyCapacityAccount"
           type="input"
           label="Weekly Capacity ($)"
           control={control}
@@ -124,14 +124,14 @@ export default function AdditionalInfo({ control, setCurrentStep }) {
         </p>
       </div>
       <CustomFormField
-        name="w2_employees_or_subcontract"
+        name="w2Employees"
         type="textarea"
         label="Do you have W2 employees or do you sub-contract work to other vendors?"
         control={control}
       />
       <div className="flex flex-col gap-y-1">
         <CustomFormField
-          name="no_of_employees_or_subcontractors"
+          name="totalEmployees"
           type="input"
           label="How many employees or subcontractors do you have in a single market?"
           control={control}
@@ -144,7 +144,7 @@ export default function AdditionalInfo({ control, setCurrentStep }) {
       </div>
       <div className="flex flex-col gap-y-1">
         <CustomFormField
-          name="experience_with_institutional_buyers"
+          name="thirdPartyWorkManagement"
           type="input"
           label="Do you have experience working with institutional buyers?"
           control={control}
@@ -154,7 +154,7 @@ export default function AdditionalInfo({ control, setCurrentStep }) {
         </p>
       </div>
       <CustomFormField
-        name="terms"
+        name="paymentTermsAgreement"
         type="select"
         label="Divvy requires all work updates be made via third party work order system Site Capture. This includes before/after photos, bid submission, as well as on platform communication to your assigned Project Coordinator. Are you comfortable with using this technology for Work Order management and payments?"
         control={control}
@@ -174,7 +174,7 @@ export default function AdditionalInfo({ control, setCurrentStep }) {
         <SelectItem value="no">No</SelectItem>
       </CustomFormField>
       <CustomFormField
-        name="interest"
+        name="occupiedMaintenanceInterest"
         type="select"
         label={`Are you interested in occupied maintenance, turns/rehab, both?`}
         control={control}
