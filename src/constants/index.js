@@ -1,3 +1,5 @@
+import { z } from "zod";
+
 export const VENDOR_OPERATING_COUNTRIES = [
   { label: "Atlanta - Barrow County", id: "Atlanta - Barrow County" },
   { label: "Atlanta - Bartow County", id: "Atlanta - Bartow County" },
@@ -521,3 +523,66 @@ export const VENDOR_SERVICES = [
 ];
 
 export const API_URL = import.meta.env.VITE_APP_API_URL;
+
+export const formSchema = z.object({
+  email: z.string().email({
+    message: "Invalid email address",
+  }),
+  firstName: z.string().min(1, {
+    message: "First name is required",
+  }),
+  lastName: z.string().min(1, {
+    message: "Last name is required",
+  }),
+  phoneNumber: z.string().min(10, {
+    message: "Invalid phone number",
+  }),
+  companyName: z.string().min(1, {
+    message: "Company name is required",
+  }),
+  w9UploadFile: z.any("W9 upload file is required"),
+  tradeLicenseFile: z.any("Trade license file is required"),
+  certificateOfInsuranceFile: z.any(
+    "Certificate of Insurance file is required"
+  ),
+  serviceAreas: z.array(z.string()).nonempty({
+    message: "At least one service area is required",
+  }),
+  providedServices: z.array(z.string()).nonempty({
+    message: "At least one service must be provided",
+  }),
+  schedulingCommunicationPreferences: z
+    .enum(["email", "phone", "sms"])
+    .default("email"),
+  schedulingContactName: z.string().min(1, {
+    message: "Scheduling contact name is required",
+  }),
+  schedulingContactEmail: z.string().email({
+    message: "Invalid scheduling contact email address",
+  }),
+  schedulingContactPhone: z.string().min(10, {
+    message: "Invalid scheduling contact phone number",
+  }),
+  closeOnBankHoliday: z.enum(["yes", "no"]).default("no"),
+  appointmentStartTime: z.string().min(1, {
+    message: "Start time is required",
+  }),
+  appointmentEndTime: z.string().min(1, {
+    message: "End time is required",
+  }),
+  weeklyCapacityJob: z.string().min(1, {
+    message: "Weekly job capacity must be at least 1",
+  }),
+  weeklyCapacityAccount: z.string().min(1, {
+    message: "Weekly account capacity must be at least 1",
+  }),
+  w2Employees: z.enum(["Yes", "No"]).default("No"),
+  totalEmployees: z.string().min(1, {
+    message: "Total employees must be at least 1",
+  }),
+  thirdPartyWorkManagement: z.enum(["yes", "no"]).default("no"),
+  paymentTermsAgreement: z.enum(["yes", "no"]).default("no"),
+  occupiedMaintenanceInterest: z
+    .enum(["occupied", "vacant", "both"])
+    .default("both"),
+});

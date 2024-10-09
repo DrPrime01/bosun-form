@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 import { Form } from "../components/ui/form";
 import { Button } from "../components/ui/button";
@@ -10,12 +11,40 @@ import AdditionalInfo from "./steps/AdditionalInfo";
 import ServiceAreaCoverage from "./steps/ServiceAreaCoverage";
 import ProvidedServices from "./steps/ProvidedServices";
 import axios from "axios";
-import { API_URL } from "../constants";
+import { API_URL, formSchema } from "../constants";
 
 export default function FormPage() {
   const [currentStep, setCurrentStep] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
-  const form = useForm();
+  const form = useForm({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      email: "",
+      firstName: "",
+      lastName: "",
+      phoneNumber: "",
+      companyName: "",
+      w9UploadFile: undefined,
+      tradeLicenseFile: undefined,
+      certificateOfInsuranceFile: undefined,
+      serviceAreas: [],
+      providedServices: [],
+      schedulingCommunicationPreferences: "",
+      schedulingContactName: "",
+      schedulingContactEmail: "",
+      schedulingContactPhone: "",
+      closeOnBankHoliday: "",
+      appointmentStartTime: "",
+      appointmentEndTime: "",
+      weeklyCapacityJob: "",
+      weeklyCapacityAccount: "",
+      w2Employees: "",
+      totalEmployees: "",
+      thirdPartyWorkManagement: "",
+      paymentTermsAgreement: "",
+      occupiedMaintenanceInterest: "",
+    },
+  });
 
   const serviceAreas = form.watch("serviceAreas");
   const providedServices = form.watch("providedServices");
@@ -77,6 +106,7 @@ export default function FormPage() {
 
       alert("Success");
       form.reset();
+      setCurrentStep(1);
     } catch (error) {
       console.error(error);
     } finally {

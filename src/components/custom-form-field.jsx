@@ -157,8 +157,8 @@ export default function CustomFormField(props) {
         <FormItem className="w-full">
           {type !== "checkbox" && <FormLabel>{label}</FormLabel>}
           <RenderField field={field} props={props} />
-          <FormDescription />
-          <FormMessage />
+          <FormDescription className="text-xs" />
+          <FormMessage className="text-xs" />
         </FormItem>
       )}
     />
