@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import { Form } from "../components/ui/form";
 import { Button } from "../components/ui/button";
@@ -104,7 +106,7 @@ export default function FormPage() {
         },
       });
 
-      alert("Success");
+      toast.success("Form submitted successfully!");
       form.reset();
       setCurrentStep(1);
     } catch (error) {
@@ -116,6 +118,7 @@ export default function FormPage() {
 
   return (
     <div className="w-full">
+      <ToastContainer />
       <div className="w-full mb-10">
         <Stepper
           currentStep={steps[currentStep - 1]["name"]}

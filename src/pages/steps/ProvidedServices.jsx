@@ -59,7 +59,7 @@ export default function ProvidedServices({
           </>
         )}
       />
-      {providedServices && (
+      {providedServices.length > 0 && (
         <CustomFormField
           name="providedServices"
           label="Vendor Services (Additional)"

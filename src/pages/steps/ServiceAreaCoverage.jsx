@@ -59,7 +59,7 @@ export default function ServiceAreaCoverage({
           </>
         )}
       />
-      {serviceAreas && (
+      {serviceAreas.length > 0 && (
         <CustomFormField
           name="serviceAreas"
           label="Vendor Service"

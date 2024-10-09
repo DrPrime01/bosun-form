@@ -17,8 +17,8 @@ export default function AdditionalInfo({ control, setCurrentStep }) {
         placeholder="Please select"
       >
         <SelectItem value="email">Email</SelectItem>
-        <SelectItem value="phone_call">Phone call</SelectItem>
-        <SelectItem value="text">Text</SelectItem>
+        <SelectItem value="phone">Phone call</SelectItem>
+        <SelectItem value="sms">Text</SelectItem>
       </CustomFormField>
       <CustomFormField
         name="schedulingContactName"
@@ -181,7 +181,7 @@ export default function AdditionalInfo({ control, setCurrentStep }) {
         placeholder="Please select"
       >
         <SelectItem value="occupied">Occupied maintenance</SelectItem>
-        <SelectItem value="turns">Turns/Rehab</SelectItem>
+        <SelectItem value="vacant">Turns/Rehab</SelectItem>
         <SelectItem value="both">Both</SelectItem>
       </CustomFormField>
       <Button
