@@ -68,13 +68,14 @@ export default function FormPage() {
           formData.append(key, value[0]);
         } else formData.append(key, value);
       }
-      const res = await axios.post(`${API_URL}/forms/submit`, formData, {
+      await axios.post(`${API_URL}/forms/submit`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
       });
 
-      console.log(res);
+      alert("Success");
+      form.reset();
     } catch (error) {
       console.error(error);
     }
