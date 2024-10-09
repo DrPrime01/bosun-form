@@ -60,8 +60,21 @@ const RenderField = ({ field, props }) => {
             withCountryCallingCode
             value={field.value}
             onChange={field.onChange}
-            className="input-phone"
+            inputClass="!w-full h-auto"
+            className={`outline-none border-none rounded-md`}
             country={"ng"}
+          />
+        </FormControl>
+      );
+    case "time":
+      return (
+        <FormControl>
+          <Input
+            name={name}
+            placeholder={placeholder}
+            className="rounded-md border border-dark-500 bg-dark-400"
+            {...field}
+            type="time"
           />
         </FormControl>
       );
