@@ -75,10 +75,10 @@
   @apply w-6 h-6 flex items-center justify-center z-10 relative bg-slate-300 rounded-full;
 }
 .active .step {
-  @apply bg-orange-500;
+  @apply bg-[#d4ac3b];
 }
 .complete .step {
-  @apply bg-orange-500;
+  @apply bg-[#d4ac3b];
 }
 .complete p {
   @apply text-slate-500;

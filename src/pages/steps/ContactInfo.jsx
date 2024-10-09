@@ -47,6 +47,7 @@ export default function ContactInfo({ control, setCurrentStep }) {
       />
 
       <Button
+        type="button"
         className="md:max-w-[160px] w-fit md:w-full self-end"
         onClick={() => setCurrentStep((prev) => prev + 1)}
       >

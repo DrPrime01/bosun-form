@@ -9,8 +9,13 @@ import {
 } from "../../components/ui/form";
 import { Checkbox } from "../../components/ui/checkbox";
 import CustomFormField from "../../components/custom-form-field";
+import { VENDOR_SERVICES } from "../../constants";
 
-export default function ProvidedServices({ control, setCurrentStep }) {
+export default function ProvidedServices({
+  control,
+  setCurrentStep,
+  providedServices,
+}) {
   return (
     <>
       <CustomFormField
@@ -26,7 +31,7 @@ export default function ProvidedServices({ control, setCurrentStep }) {
                 control={control}
                 name="providedServices"
                 render={({ field }) => {
-                  const valueArray = field.value || []; // Ensure field.value is an array
+                  const valueArray = field.value || [];
                   return (
                     <FormItem
                       key={item.id.toLowerCase().split(" ").join("-")}
@@ -34,13 +39,11 @@ export default function ProvidedServices({ control, setCurrentStep }) {
                     >
                       <FormControl>
                         <Checkbox
-                          checked={valueArray.includes(item.id)} // Use the valueArray
+                          checked={valueArray.includes(item.id)}
                           onCheckedChange={(checked) => {
                             const updatedValues = checked
-                              ? [...valueArray, item.id] // Add item to the array
-                              : valueArray.filter(
-                                  (value) => value !== item.id // Remove item from the array
-                                );
+                              ? [...valueArray, item.id]
+                              : valueArray.filter((value) => value !== item.id);
                             field.onChange(updatedValues);
                           }}
                         />
@@ -56,14 +59,61 @@ export default function ProvidedServices({ control, setCurrentStep }) {
           </>
         )}
       />
+      {providedServices && (
+        <CustomFormField
+          name="providedServices"
+          label="Vendor Services (Additional)"
+          type="skeleton"
+          control={control}
+          renderSkeleton={() => (
+            <>
+              {VENDOR_SERVICES.map((item) => (
+                <FormField
+                  key={item.id}
+                  control={control}
+                  name="providedServices"
+                  render={({ field }) => {
+                    const valueArray = field.value || [];
+                    return (
+                      <FormItem
+                        key={item.id.toLowerCase().split(" ").join("-")}
+                        className="flex flex-row items-start space-x-3 space-y-0"
+                      >
+                        <FormControl>
+                          <Checkbox
+                            checked={valueArray.includes(item.id)}
+                            onCheckedChange={(checked) => {
+                              const updatedValues = checked
+                                ? [...valueArray, item.id]
+                                : valueArray.filter(
+                                    (value) => value !== item.id
+                                  );
+                              field.onChange(updatedValues);
+                            }}
+                          />
+                        </FormControl>
+                        <FormLabel className="font-normal">
+                          {item.label}
+                        </FormLabel>
+                      </FormItem>
+                    );
+                  }}
+                />
+              ))}
+            </>
+          )}
+        />
+      )}
       <div className="flex items-center justify-between">
         <Button
+          type="button"
           className="md:max-w-[160px] w-fit md:w-full"
           onClick={() => setCurrentStep((prev) => prev - 1)}
         >
           Previous
         </Button>
         <Button
+          type="button"
           className="md:max-w-[160px] w-fit md:w-full"
           onClick={() => setCurrentStep((prev) => prev + 1)}
         >

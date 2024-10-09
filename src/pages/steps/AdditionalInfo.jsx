@@ -144,7 +144,7 @@ export default function AdditionalInfo({ control, setCurrentStep }) {
       </div>
       <div className="flex flex-col gap-y-1">
         <CustomFormField
-          name="thirdPartyWorkManagement"
+          name="experience"
           type="input"
           label="Do you have experience working with institutional buyers?"
           control={control}
@@ -154,7 +154,7 @@ export default function AdditionalInfo({ control, setCurrentStep }) {
         </p>
       </div>
       <CustomFormField
-        name="paymentTermsAgreement"
+        name="thirdPartyWorkManagement"
         type="select"
         label="Divvy requires all work updates be made via third party work order system Site Capture. This includes before/after photos, bid submission, as well as on platform communication to your assigned Project Coordinator. Are you comfortable with using this technology for Work Order management and payments?"
         control={control}
@@ -164,7 +164,7 @@ export default function AdditionalInfo({ control, setCurrentStep }) {
         <SelectItem value="no">No</SelectItem>
       </CustomFormField>
       <CustomFormField
-        name="net_30"
+        name="paymentTermsAgreement"
         type="select"
         label={`Our payment terms are "Net 30". Are you ok with this?`}
         control={control}
@@ -185,6 +185,7 @@ export default function AdditionalInfo({ control, setCurrentStep }) {
         <SelectItem value="both">Both</SelectItem>
       </CustomFormField>
       <Button
+        type="button"
         className="md:max-w-[160px] w-fit md:w-full"
         onClick={() => setCurrentStep((prev) => prev - 1)}
       >

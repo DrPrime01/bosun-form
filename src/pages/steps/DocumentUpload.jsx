@@ -23,12 +23,14 @@ export default function DocumentUpload({ setCurrentStep }) {
         <Button
           className="md:max-w-[160px] w-fit md:w-full"
           onClick={() => setCurrentStep((prev) => prev - 1)}
+          type="button"
         >
           Previous
         </Button>
         <Button
           className="md:max-w-[160px] w-fit md:w-full"
           onClick={() => setCurrentStep((prev) => prev + 1)}
+          type="button"
         >
           Next
         </Button>
