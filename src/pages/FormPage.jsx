@@ -22,9 +22,11 @@ export default function FormPage() {
   const steps = [
     {
       1: <ContactInfo control={form.control} setCurrentStep={setCurrentStep} />,
+      name: "Contact Information",
     },
     {
       2: <DocumentUpload setCurrentStep={setCurrentStep} />,
+      name: "Document Upload",
     },
     {
       3: (
@@ -34,6 +36,7 @@ export default function FormPage() {
           serviceAreas={serviceAreas}
         />
       ),
+      name: "Service Area Coverage",
     },
     {
       4: (
@@ -43,6 +46,7 @@ export default function FormPage() {
           providedServices={providedServices}
         />
       ),
+      name: "Provided Services",
     },
     {
       5: (
@@ -51,6 +55,7 @@ export default function FormPage() {
           setCurrentStep={setCurrentStep}
         />
       ),
+      name: "Additional Information",
     },
   ];
 
@@ -59,9 +64,15 @@ export default function FormPage() {
       console.log(data);
       const formData = new FormData();
       for (const [key, value] of Object.entries(data)) {
-        formData.append(key, value);
+        if (key.includes("File")) {
+          formData.append(key, value[0]);
+        } else formData.append(key, value);
       }
-      const res = await axios.post(`${API_URL}/forms/submit`, formData);
+      const res = await axios.post(`${API_URL}/forms/submit`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
 
       console.log(res);
     } catch (error) {
@@ -73,22 +84,21 @@ export default function FormPage() {
     <div className="w-full">
       <div className="w-full mb-10">
         <Stepper
-          steps={steps}
-          complete={currentStep === steps.length}
-          currentStep={currentStep}
+          currentStep={steps[currentStep - 1]["name"]}
+          value={Math.ceil((currentStep / steps.length) * 100)}
         />
       </div>
 
       <Form {...form}>
         <form
-          className="flex flex-col gap-y-6"
+          className="flex flex-col gap-y-6 relative"
           onSubmit={form.handleSubmit(onSubmit)}
         >
           {steps[currentStep - 1][currentStep]}
           {currentStep === steps.length && (
             <Button
               type="submit"
-              className="md:max-w-[160px] w-fit md:w-full self-end"
+              className="md:max-w-[160px] w-fit md:w-full self-end absolute bottom-0"
             >
               Submit
             </Button>

@@ -1,25 +1,14 @@
 /* eslint-disable react/prop-types */
 
-import CheckIcon from "./vectors/check-icon";
+// import CheckIcon from "./vectors/check-icon";
 
-export default function Stepper({ steps, currentStep, complete }) {
+export default function Stepper({ value, currentStep }) {
   return (
-    <div className="flex items-center justify-between">
-      {steps.map((step, i) => (
-        <div
-          key={i}
-          className={`step-item ${currentStep === i + 1 && "active"} ${
-            (i + 1 < currentStep || complete) && "complete"
-          } `}
-        >
-          <div className="flex flex-col">
-            <div className="step m-2">
-              <CheckIcon />
-            </div>
-            <p className="text-sm text-slate-300">Step {i + 1}</p>
-          </div>
-        </div>
-      ))}
+    <div className="flex flex-col gap-y-2">
+      <p className="text-sm md:text-base font-medium">{currentStep}</p>
+      <progress id="status" max="100" value={value} className="w-full">
+        {value}%
+      </progress>
     </div>
   );
 }

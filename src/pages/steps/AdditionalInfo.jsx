@@ -27,7 +27,7 @@ export default function AdditionalInfo({ control, setCurrentStep }) {
         control={control}
         placeholder="Jane Doe"
       />
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="flex flex-wrap gap-4">
         <CustomFormField
           name="schedulingContactEmail"
           type="input"
@@ -70,14 +70,14 @@ export default function AdditionalInfo({ control, setCurrentStep }) {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <CustomFormField
-          name="appointment_start_time_sat"
+          name="appointmentStartTimeSaturday"
           type="time"
           label="Appointment Start Time Saturday"
           control={control}
           placeholder="Please select"
         />
         <CustomFormField
-          name="appointment_end_time_sat"
+          name="appointmentEndTimeSaturday"
           type="time"
           label="Appointment End Time Saturday"
           control={control}
@@ -86,14 +86,14 @@ export default function AdditionalInfo({ control, setCurrentStep }) {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <CustomFormField
-          name="appointment_start_time_sun"
+          name="appointmentStartTimeSunday"
           type="time"
           label="Appointment Start Time Sunday"
           control={control}
           placeholder="Please select"
         />
         <CustomFormField
-          name="appointment_end_time_sun"
+          name="appointmentEndTimeSunday"
           type="time"
           label="Appointment End Time Sunday"
           control={control}
