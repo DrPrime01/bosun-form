@@ -14,6 +14,7 @@ import { API_URL } from "../constants";
 
 export default function FormPage() {
   const [currentStep, setCurrentStep] = useState(1);
+  const [isLoading, setIsLoading] = useState(false);
   const form = useForm();
 
   const serviceAreas = form.watch("serviceAreas");
@@ -61,7 +62,7 @@ export default function FormPage() {
 
   const onSubmit = async (data) => {
     try {
-      console.log(data);
+      setIsLoading(true);
       const formData = new FormData();
       for (const [key, value] of Object.entries(data)) {
         if (key.includes("File")) {
@@ -78,6 +79,8 @@ export default function FormPage() {
       form.reset();
     } catch (error) {
       console.error(error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -99,9 +102,10 @@ export default function FormPage() {
           {currentStep === steps.length && (
             <Button
               type="submit"
-              className="md:max-w-[160px] w-fit md:w-full self-end absolute bottom-0"
+              disabled={isLoading}
+              className="md:max-w-[160px] w-fit md:w-full self-end absolute bottom-0 disabled:opacity-50"
             >
-              Submit
+              {isLoading ? "Submitting" : "Submit"}
             </Button>
           )}
         </form>
