@@ -156,7 +156,7 @@ export default function AdditionalInfo({ control, setCurrentStep }) {
       <CustomFormField
         name="thirdPartyWorkManagement"
         type="select"
-        label="Divvy requires all work updates be made via third party work order system Site Capture. This includes before/after photos, bid submission, as well as on platform communication to your assigned Project Coordinator. Are you comfortable with using this technology for Work Order management and payments?"
+        label="P3CS requires all work updates be made via third party work order system Site Capture. This includes before/after photos, bid submission, as well as on platform communication to your assigned Project Coordinator. Are you comfortable with using this technology for Work Order management and payments?"
         control={control}
         placeholder="Please select"
       >
