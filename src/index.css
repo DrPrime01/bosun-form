@@ -92,6 +92,6 @@ progress::-webkit-progress-bar {
   border-radius: 8px;
 }
 progress::-webkit-progress-value {
-  background-color: #fdcd45;
+  background-color: #000000;
   border-radius: 8px;
 }

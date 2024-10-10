@@ -3,9 +3,9 @@ import FormPage from "./pages/FormPage";
 function App() {
   return (
     <main className="flex h-screen max-h-screen w-screen fixed inset-0">
-      <div className="h-full basis-2/5 hidden md:flex bg-[#FDCD45]">
+      <div className="h-full basis-2/5 hidden md:flex bg-white">
         <img
-          src="/divvy.jpeg"
+          src="/p3cs.jpg"
           alt="logo"
           className="h-auto w-full object-contain"
         />
